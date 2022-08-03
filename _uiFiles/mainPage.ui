@@ -17,225 +17,228 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
+      <x>70</x>
+      <y>60</y>
       <width>441</width>
       <height>981</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="inputTab">
      <attribute name="title">
       <string>입력</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QListWidget" name="listWidget">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>30</y>
-        <width>321</width>
-        <height>61</height>
+        <x>20</x>
+        <y>20</y>
+        <width>391</width>
+        <height>471</height>
        </rect>
       </property>
-      <property name="text">
-       <string>TEXT</string>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>110</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
+      <property name="midLineWidth">
+       <number>0</number>
       </property>
-      <property name="text">
-       <string>Image</string>
+      <property name="dragEnabled">
+       <bool>true</bool>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>190</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
       </property>
-      <property name="text">
-       <string>Voice</string>
+      <property name="defaultDropAction">
+       <enum>Qt::CopyAction</enum>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>270</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
+      <property name="iconSize">
+       <size>
+        <width>200</width>
+        <height>200</height>
+       </size>
       </property>
-      <property name="text">
-       <string>Camera</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>350</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Mic</string>
-      </property>
+      <item>
+       <property name="text">
+        <string>text</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>image</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>mic</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>camera</string>
+       </property>
+      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="modelTab">
      <attribute name="title">
       <string>모델</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QListWidget" name="listWidget_3">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>30</x>
         <y>40</y>
-        <width>321</width>
-        <height>61</height>
+        <width>361</width>
+        <height>861</height>
        </rect>
       </property>
-      <property name="text">
-       <string>TEXT</string>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>120</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_8">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>200</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_9">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>280</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>360</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_11">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>440</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
+      <item>
+       <property name="text">
+        <string>번역</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>이미지번역</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>TTS</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>STT</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>OCR</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Object Detection</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Face Recognition</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Text to Image</string>
+       </property>
+      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="outputTab">
      <attribute name="title">
       <string>출력</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QListWidget" name="listWidget_4">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>30</y>
-        <width>321</width>
-        <height>61</height>
+        <x>40</x>
+        <y>60</y>
+        <width>331</width>
+        <height>371</height>
        </rect>
       </property>
-      <property name="text">
-       <string>TEXT</string>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
       </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_13">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>110</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_14">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>190</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_15">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>270</y>
-        <width>321</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TEXT</string>
-      </property>
+      <item>
+       <property name="text">
+        <string>text</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>image</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>sound</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>using xyplotter</string>
+       </property>
+      </item>
      </widget>
     </widget>
+   </widget>
+   <widget class="QListWidget" name="listWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>100</y>
+      <width>951</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <property name="dragEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="dragDropOverwriteMode">
+     <bool>true</bool>
+    </property>
+    <property name="dragDropMode">
+     <enum>QAbstractItemView::DragDrop</enum>
+    </property>
+    <property name="defaultDropAction">
+     <enum>Qt::MoveAction</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>1270</x>
+      <y>890</y>
+      <width>112</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Run</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>1400</x>
+      <y>890</y>
+      <width>112</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>모델 저장</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>890</y>
+      <width>112</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
