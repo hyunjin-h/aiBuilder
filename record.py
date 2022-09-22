@@ -30,36 +30,39 @@ class SettingsWindow(Dialog):
 
     def body(self, master):
         ttk.Label(master, text='Select host API:').pack(anchor='w')
-        self.hostapi_list = ttk.Combobox(master, state='readonly', width=50)
-        self.hostapi_list.pack()
-        self.hostapi_list['values'] = [
-            hostapi['name'] for hostapi in sd.query_hostapis()]
+        hostapi_list = ttk.Combobox(master, state='readonly', width=50)
+        hostapi_list.pack()
+        hostapi_list['values'] = [hostapi['name']
+                                  for hostapi in sd.query_hostapis()]
 
         ttk.Label(master, text='Select sound device:').pack(anchor='w')
-        self.device_ids = []
-        self.device_list = ttk.Combobox(master, state='readonly', width=50)
-        self.device_list.pack()
+        device_ids = []
+        device_list = ttk.Combobox(master, state='readonly', width=50)
+        device_list.pack()
 
-        self.hostapi_list.bind('<<ComboboxSelected>>', self.update_device_list)
+        def update_device_list(*args):
+            hostapi = sd.query_hostapis(hostapi_list.current())
+            nonlocal device_ids
+            device_ids = [
+                idx
+                for idx in hostapi['devices']
+                if sd.query_devices(idx)['max_output_channels'] > 0]
+            device_list['values'] = [
+                sd.query_devices(idx)['name'] for idx in device_ids]
+            default = hostapi['default_output_device']
+            if default >= 0:
+                device_list.current(device_ids.index(default))
+                device_list.event_generate('<<ComboboxSelected>>')
+
+        def select_device(*args):
+            self.result = device_ids[device_list.current()]
+
+        hostapi_list.bind('<<ComboboxSelected>>', update_device_list)
+        device_list.bind('<<ComboboxSelected>>', select_device)
+
         with contextlib.suppress(sd.PortAudioError):
-            self.hostapi_list.current(sd.default.hostapi)
-            self.hostapi_list.event_generate('<<ComboboxSelected>>')
-
-    def update_device_list(self, *args):
-        hostapi = sd.query_hostapis(self.hostapi_list.current())
-        self.device_ids = [
-            idx
-            for idx in hostapi['devices']
-            if sd.query_devices(idx)['max_input_channels'] > 0]
-        self.device_list['values'] = [
-            sd.query_devices(idx)['name'] for idx in self.device_ids]
-        default = hostapi['default_input_device']
-        if default >= 0:
-            self.device_list.current(self.device_ids.index(default))
-
-    def validate(self):
-        self.result = self.device_ids[self.device_list.current()]
-        return True
+            hostapi_list.current(sd.default.hostapi)
+            hostapi_list.event_generate('<<ComboboxSelected>>')
 
 
 class RecGui(tk.Tk):
@@ -145,9 +148,11 @@ class RecGui(tk.Tk):
     def on_rec(self):
         self.settings_button['state'] = 'disabled'
         self.recording = True
-
+        global filename
         filename = tempfile.mktemp(
-            prefix='delme_rec_gui_', suffix='.wav', dir='')
+            prefix='hanium_', suffix='.wav', dir='')
+
+
 
         if self.audio_q.qsize() != 0:
             print('WARNING: Queue not empty!')
@@ -165,7 +170,7 @@ class RecGui(tk.Tk):
 
         # NB: File creation might fail!  For brevity, we don't check for this.
 
-        self.rec_button['text'] = 'stop'
+        self.rec_button['text'] = '🟥'
         self.rec_button['command'] = self.on_stop
         self.rec_button['state'] = 'normal'
         self.file_label['text'] = filename
@@ -173,6 +178,7 @@ class RecGui(tk.Tk):
     def on_stop(self, *args):
         self.rec_button['state'] = 'disabled'
         self.recording = False
+        self.close_window()
         self.wait_for_thread()
 
     def wait_for_thread(self):
@@ -188,11 +194,10 @@ class RecGui(tk.Tk):
 
     def on_settings(self, *args):
         w = SettingsWindow(self, 'Settings')
-        if w.result is not None:
-            self.create_stream(device=w.result)
+        self.create_stream(device=w.result)
 
     def init_buttons(self):
-        self.rec_button['text'] = 'record'
+        self.rec_button['text'] = '🛑'
         self.rec_button['command'] = self.on_rec
         if self.stream:
             self.rec_button['state'] = 'normal'
@@ -210,14 +215,18 @@ class RecGui(tk.Tk):
         self.after(100, self.update_gui)
 
     def close_window(self):
-        if self.recording:
-            self.on_stop()
+    #    if self.recording:
+    #        self.on_stop()
+
         self.destroy()
 
 
 def main():
     app = RecGui()
     app.mainloop()
+
+
+
 
 
 if __name__ == '__main__':
