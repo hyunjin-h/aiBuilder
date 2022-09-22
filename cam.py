@@ -100,7 +100,7 @@ class Work(QThread):
                 pic = convertir_QT.scaled(800,600, Qt.KeepAspectRatio)
                 self.Imageupd.emit(pic)
 
-        file = 'input_photo.jpg'
+        file = 'image/input_photo.jpg'
         cv2.imwrite(file,frame)
         print(file, ' saved')
 
