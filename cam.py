@@ -34,6 +34,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(100,100, 232);\n"
 "\n"
 "")
+
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_3.setGeometry(QtCore.QRect(450, 900, 91, 30))
