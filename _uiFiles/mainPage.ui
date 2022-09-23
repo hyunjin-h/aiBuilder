@@ -61,8 +61,14 @@ background-color: rgb(255, 255, 255);
       <property name="mouseTracking">
        <bool>true</bool>
       </property>
+      <property name="tabletTracking">
+       <bool>true</bool>
+      </property>
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="toolTip">
+       <string/>
       </property>
       <property name="midLineWidth">
        <number>0</number>
