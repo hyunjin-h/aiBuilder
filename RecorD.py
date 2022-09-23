@@ -150,7 +150,7 @@ class RecGui(tk.Tk):
         self.recording = True
         global filename
         filename = tempfile.mktemp(
-            prefix='hanium_', suffix='.wav', dir='')
+            prefix='hanium_', suffix='.wav', dir='soundFiles')
 
 
 

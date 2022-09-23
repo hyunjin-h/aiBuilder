@@ -1,7 +1,9 @@
+import os
 import sys
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow
-import input_text
+from PyQt5.QtWidgets import *
+from PyQt5 import QtWidgets, uic
+import input_text,RecorD
+
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
 
@@ -16,21 +18,27 @@ class WindowClass(QMainWindow, form_class):
         self.inputList.setSpacing(5)
         self.modelList.setSpacing(5)
 
+
     def chkItemDoubleClicked(self):
         rowNum=self.mainList.currentRow()
         rowText=self.mainList.currentItem().text()
         print(str(rowNum) + " : " + rowText)
         if(rowText=='text'):
-            print(rowText)
             input_text.TextDialog(self)
         elif(rowText=='image'):
-            print(rowText)
-        elif(rowText=='mic'):
-            print(rowText)
+            self.fileopen()
+        elif(rowText=='sound'):
+            self.fileopen()
         elif(rowText=='camera'):
-            print(rowText)
-        elif(rowText=='draw'):
-            print(rowText)
+            os.system('cam.py')
+            try:
+                inputImg='image/input_photo.jpg'
+            except:
+                pass
+        elif(rowText=='mic'):
+            app = RecorD.RecGui()
+            app.mainloop()
+
         elif(rowText=='image'):
             print(rowText)
         elif(rowText=='image'):
@@ -41,6 +49,13 @@ class WindowClass(QMainWindow, form_class):
     def runModel(self):
         rowNum=self.mainList.currentRow()
 
+
+    def fileopen(self):
+        global filename
+        filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File')
+        global filepath
+        filepath = f'{filename[0]}'
+        print(filepath)
 
 
 
