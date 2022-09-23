@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2544</width>
-    <height>1446</height>
+    <width>2572</width>
+    <height>1493</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -33,13 +33,12 @@ background-color: rgb(210, 230, 255);</string>
       <x>40</x>
       <y>40</y>
       <width>451</width>
-      <height>1391</height>
+      <height>1421</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 14pt &quot;NanumSquare&quot;;
+     <string notr="true">font: 25pt &quot;NanumSquare&quot;;
 border:20px;
-border-radius: 20px;
 background-color: rgb(255, 255, 255);
 </string>
     </property>
@@ -54,7 +53,68 @@ background-color: rgb(255, 255, 255);
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>20</y>
+        <y>110</y>
+        <width>391</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
+      </property>
+      <property name="defaultDropAction">
+       <enum>Qt::CopyAction</enum>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>200</width>
+        <height>200</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>text</string>
+       </property>
+       <property name="toolTip">
+        <string notr="true"/>
+       </property>
+       <property name="whatsThis">
+        <string extracomment="직접 text를 입력"/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>image</string>
+       </property>
+       <property name="toolTip">
+        <string extracomment="보유한 이미지 파일 입력"/>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>sound</string>
+       </property>
+       <property name="toolTip">
+        <string extracomment="보유한 사운드파일 입력"/>
+       </property>
+      </item>
+     </widget>
+     <widget class="QListWidget" name="listWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>670</y>
         <width>391</width>
         <height>471</height>
        </rect>
@@ -82,12 +142,7 @@ background-color: rgb(255, 255, 255);
       </property>
       <item>
        <property name="text">
-        <string>text</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>image</string>
+        <string>camera</string>
        </property>
       </item>
       <item>
@@ -97,9 +152,55 @@ background-color: rgb(255, 255, 255);
       </item>
       <item>
        <property name="text">
-        <string>camera</string>
+        <string>draw</string>
        </property>
       </item>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>30</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 15pt &quot;NanumSquare&quot;;
+border:20px;
+border-radius: 20px;
+background-color: rgb(225, 225, 225);
+</string>
+      </property>
+      <property name="text">
+       <string>파일입력</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>600</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 15pt &quot;NanumSquare&quot;;
+border:20px;
+border-radius: 20px;
+background-color: rgb(225, 225, 225);
+</string>
+      </property>
+      <property name="text">
+       <string>실시간 입력</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="modelTab">
@@ -111,7 +212,7 @@ background-color: rgb(255, 255, 255);
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>361</width>
+        <width>401</width>
         <height>861</height>
        </rect>
       </property>
@@ -169,7 +270,7 @@ background-color: rgb(255, 255, 255);
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>331</width>
+        <width>411</width>
         <height>371</height>
        </rect>
       </property>
@@ -193,19 +294,19 @@ background-color: rgb(255, 255, 255);
       </item>
       <item>
        <property name="text">
-        <string>using xyplotter</string>
+        <string>xyplotter</string>
        </property>
       </item>
      </widget>
     </widget>
    </widget>
-   <widget class="QListWidget" name="listWidget_2">
+   <widget class="QListWidget" name="mainList">
     <property name="geometry">
      <rect>
       <x>520</x>
       <y>80</y>
       <width>611</width>
-      <height>1211</height>
+      <height>1251</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -250,7 +351,7 @@ background-color:rgb(255,255,255);
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>1310</y>
+      <y>1350</y>
       <width>191</width>
       <height>101</height>
      </rect>
@@ -273,7 +374,7 @@ font: 14pt &quot;NanumSquare&quot;;
       <x>1170</x>
       <y>80</y>
       <width>1341</width>
-      <height>1311</height>
+      <height>1361</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -298,11 +399,11 @@ font: 14pt &quot;NanumSquare&quot;;
      <string>출력</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="runBtn">
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>1310</y>
+      <y>1350</y>
       <width>401</width>
       <height>101</height>
      </rect>
