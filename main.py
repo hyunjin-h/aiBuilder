@@ -2,7 +2,7 @@ import os
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets, uic
-import input_text,RecorD
+import input_text, RecorD
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -18,13 +18,17 @@ class WindowClass(QMainWindow, form_class):
         self.inputList.setSpacing(5)
         self.modelList.setSpacing(5)
 
-
     def chkItemDoubleClicked(self):
         rowNum=self.mainList.currentRow()
         rowText=self.mainList.currentItem().text()
         print(str(rowNum) + " : " + rowText)
+
+
         if(rowText=='text'):
             input_text.TextDialog(self)
+
+
+
         elif(rowText=='image'):
             self.fileopen()
         elif(rowText=='sound'):
@@ -39,12 +43,12 @@ class WindowClass(QMainWindow, form_class):
             app = RecorD.RecGui()
             app.mainloop()
 
-        elif(rowText=='image'):
-            print(rowText)
-        elif(rowText=='image'):
-            print(rowText)
-        elif(rowText=='image'):
-            print(rowText)
+        # elif(rowText=='image'):
+        #     print(rowText)
+        # elif(rowText=='image'):
+        #     print(rowText)
+        # elif(rowText=='image'):
+        #     print(rowText)
 
     def runModel(self):
         rowNum=self.mainList.currentRow()

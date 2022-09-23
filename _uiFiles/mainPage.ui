@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>2572</width>
-    <height>1493</height>
+    <height>1487</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -43,7 +43,7 @@ background-color: rgb(255, 255, 255);
 </string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="inputTab">
      <attribute name="title">
@@ -343,7 +343,7 @@ font: 14pt &quot;NanumSquare&quot;;
      <string>Reset</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget_2" native="true">
+   <widget class="QWidget" name="output" native="true">
     <property name="geometry">
      <rect>
       <x>1170</x>
