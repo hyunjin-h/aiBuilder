@@ -24,7 +24,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">
-background-color: rgb(210, 230, 255);</string>
+background-color: rgb(200,200,200);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -49,7 +49,7 @@ background-color: rgb(255, 255, 255);
      <attribute name="title">
       <string>입력</string>
      </attribute>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListWidget" name="fileList">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -88,6 +88,9 @@ background-color: rgb(255, 255, 255);
         <height>200</height>
        </size>
       </property>
+      <property name="layoutMode">
+       <enum>QListView::Batched</enum>
+      </property>
       <item>
        <property name="text">
         <string>text</string>
@@ -116,7 +119,7 @@ background-color: rgb(255, 255, 255);
        </property>
       </item>
      </widget>
-     <widget class="QListWidget" name="listWidget_2">
+     <widget class="QListWidget" name="inputList">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -213,7 +216,7 @@ background-color: rgb(225, 225, 225);
      <attribute name="title">
       <string>모델</string>
      </attribute>
-     <widget class="QListWidget" name="listWidget_3">
+     <widget class="QListWidget" name="modelList">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -267,44 +270,6 @@ background-color: rgb(225, 225, 225);
       </item>
      </widget>
     </widget>
-    <widget class="QWidget" name="outputTab">
-     <attribute name="title">
-      <string>출력</string>
-     </attribute>
-     <widget class="QListWidget" name="listWidget_4">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>411</width>
-        <height>371</height>
-       </rect>
-      </property>
-      <property name="dragDropMode">
-       <enum>QAbstractItemView::DragOnly</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>text</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>image</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>sound</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>xyplotter</string>
-       </property>
-      </item>
-     </widget>
-    </widget>
    </widget>
    <widget class="QListWidget" name="mainList">
     <property name="geometry">
@@ -316,10 +281,11 @@ background-color: rgb(225, 225, 225);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 14pt &quot;NanumSquare&quot;;
+     <string notr="true">font: 25pt &quot;NanumSquare&quot;;
 border:20px;
 border-radius: 20px;
 background-color:rgb(255,255,255);
+
 </string>
     </property>
     <property name="dragEnabled">
@@ -332,13 +298,16 @@ background-color:rgb(255,255,255);
      <enum>QAbstractItemView::DragDrop</enum>
     </property>
     <property name="defaultDropAction">
-     <enum>Qt::MoveAction</enum>
+     <enum>Qt::CopyAction</enum>
     </property>
     <property name="movement">
      <enum>QListView::Free</enum>
     </property>
     <property name="flow">
      <enum>QListView::TopToBottom</enum>
+    </property>
+    <property name="isWrapping" stdset="0">
+     <bool>false</bool>
     </property>
     <property name="resizeMode">
      <enum>QListView::Fixed</enum>
@@ -347,7 +316,7 @@ background-color:rgb(255,255,255);
      <enum>QListView::Batched</enum>
     </property>
     <property name="viewMode">
-     <enum>QListView::IconMode</enum>
+     <enum>QListView::ListMode</enum>
     </property>
     <property name="uniformItemSizes">
      <bool>false</bool>
@@ -384,7 +353,8 @@ font: 14pt &quot;NanumSquare&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(255,255,255);</string>
+     <string notr="true">background-color:rgb(255,255,255);
+border-radius:20px;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">

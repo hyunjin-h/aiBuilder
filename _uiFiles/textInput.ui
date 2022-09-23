@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>textInput</class>
+ <widget class="QWidget" name="textInput">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1276</width>
+    <height>710</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>나눔스퀘어_ac</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>텍스트를 입력하세요</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <widget class="QPushButton" name="textCheck">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>550</y>
+     <width>451</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;NanumSquare&quot;;
+border:20px;
+border-radius:20px;
+background-color: rgb(255, 255, 255);
+</string>
+   </property>
+   <property name="text">
+    <string>입력</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>1221</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 25pt &quot;NanumSquare&quot;;
+border:20px;
+background-color: rgb(255, 255, 255);
+</string>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
