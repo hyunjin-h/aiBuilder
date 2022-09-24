@@ -1,8 +1,9 @@
 import os
 import sys
 from PyQt5.QtWidgets import *
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic,QtCore
 import input_text, RecorD
+from input_text import TextDialog
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -11,12 +12,14 @@ class WindowClass(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.mainList.itemDoubleClicked.connect(self.chkItemDoubleClicked)
         self.runBtn.clicked.connect(self.runModel)
 
         self.fileList.setSpacing(5)
         self.inputList.setSpacing(5)
         self.modelList.setSpacing(5)
+        self.text=""
 
     def chkItemDoubleClicked(self):
         rowNum=self.mainList.currentRow()
@@ -25,7 +28,10 @@ class WindowClass(QMainWindow, form_class):
 
 
         if(rowText=='text'):
-            input_text.TextDialog(self)
+            self.inputTxt=TextDialog()
+            self.inputTxt.exec()
+            self.text=self.inputTxt.text
+            self.show()
 
 
 
@@ -43,12 +49,12 @@ class WindowClass(QMainWindow, form_class):
             app = RecorD.RecGui()
             app.mainloop()
 
-        # elif(rowText=='image'):
-        #     print(rowText)
-        # elif(rowText=='image'):
-        #     print(rowText)
-        # elif(rowText=='image'):
-        #     print(rowText)
+        elif(rowText=='TTS'):
+            print(rowText)
+        elif(rowText=='STT'):
+            print(rowText)
+        elif(rowText=='image'):
+            print(rowText)
 
     def runModel(self):
         rowNum=self.mainList.currentRow()

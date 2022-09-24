@@ -1,19 +1,25 @@
 from PyQt5 import uic
 from PyQt5.QtWidgets import *
+from PyQt5 import QtCore
 
+form_text=uic.loadUiType('_uiFiles/textInput.ui')[0]
 
-class TextDialog(QDialog):  # 텍스트 입력할 수 있는 Dialog
-    def __init__(self, parent):
-        super(TextDialog, self).__init__(parent)
-        text_ui = '_uiFiles/textInput.ui'
-        uic.loadUi(text_ui, self)
-        global text
+class TextDialog(QDialog,form_text):  # 텍스트 입력할 수 있는 Dialog
+    def __init__(self):
+        super(TextDialog, self).__init__()
+        self.initUI()
         self.show()
+        self.text = ""
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+
+    def initUI(self):
+        self.setupUi(self)
         self.textCheck.clicked.connect(self.quit_text)
 
     def quit_text(self):
         # self.detect_lang()
-        text = str(self.textEdit.toPlainText())
-        print(text)
+        self.text = str(self.textEdit.toPlainText())
+        print(self.text)
         self.accept()
+
 
