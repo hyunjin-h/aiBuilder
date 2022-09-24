@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>2572</width>
-    <height>1487</height>
+    <height>1607</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -33,7 +33,7 @@ background-color: rgb(200,200,200);</string>
       <x>40</x>
       <y>40</y>
       <width>451</width>
-      <height>1421</height>
+      <height>1461</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -277,7 +277,7 @@ background-color: rgb(225, 225, 225);
       <x>520</x>
       <y>80</y>
       <width>611</width>
-      <height>1251</height>
+      <height>1301</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -289,16 +289,16 @@ background-color:rgb(255,255,255);
 </string>
     </property>
     <property name="dragEnabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="dragDropOverwriteMode">
      <bool>false</bool>
     </property>
     <property name="dragDropMode">
-     <enum>QAbstractItemView::DragDrop</enum>
+     <enum>QAbstractItemView::DropOnly</enum>
     </property>
     <property name="defaultDropAction">
-     <enum>Qt::CopyAction</enum>
+     <enum>Qt::MoveAction</enum>
     </property>
     <property name="movement">
      <enum>QListView::Free</enum>
@@ -326,7 +326,7 @@ background-color:rgb(255,255,255);
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>1350</y>
+      <y>1400</y>
       <width>191</width>
       <height>101</height>
      </rect>
@@ -349,7 +349,7 @@ font: 14pt &quot;NanumSquare&quot;;
       <x>1170</x>
       <y>80</y>
       <width>1341</width>
-      <height>1361</height>
+      <height>1421</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -379,7 +379,7 @@ border-radius:20px;</string>
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>1350</y>
+      <y>1400</y>
       <width>401</width>
       <height>101</height>
      </rect>

@@ -12,6 +12,7 @@ class WindowClass(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.initUI()
         # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.mainList.itemDoubleClicked.connect(self.chkItemDoubleClicked)
         self.runBtn.clicked.connect(self.runModel)
@@ -20,7 +21,7 @@ class WindowClass(QMainWindow, form_class):
         self.inputList.setSpacing(5)
         self.modelList.setSpacing(5)
         self.text=""
-
+    def
     def chkItemDoubleClicked(self):
         rowNum=self.mainList.currentRow()
         rowText=self.mainList.currentItem().text()
