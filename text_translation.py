@@ -3,7 +3,8 @@ import sys
 import urllib.request
 client_id = "pficodqpxs"
 client_secret = "aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
-encText = urllib.parse.quote("스타벅스 커피는 맛있어요")
+
+encText = urllib.parse.quote(input("텍스트입력:"))
 data = "source=ko&target=en&text=" + encText #여기에서 언어를 바꾸면 될듯 조건문 사용해서
 url = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation"
 request = urllib.request.Request(url)
