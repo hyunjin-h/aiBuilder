@@ -8,10 +8,12 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("카메라")
         MainWindow.resize(1000, 1000)
+
         MainWindow.setMinimumSize(QtCore.QSize(1000, 1000))
         MainWindow.setMaximumSize(QtCore.QSize(1000, 1000))
         MainWindow.setStyleSheet("QWidget#centralwidget{background-color: rgb(230,230,255);}\n"
 "")
+        MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)

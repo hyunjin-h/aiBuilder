@@ -24,7 +24,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">
-background-color: rgb(200,200,200);</string>
+background-color:#6a89cc;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -36,10 +36,14 @@ background-color: rgb(200,200,200);</string>
       <height>1461</height>
      </rect>
     </property>
+    <property name="toolTipDuration">
+     <number>4</number>
+    </property>
     <property name="styleSheet">
-     <string notr="true">font: 25pt &quot;NanumSquare&quot;;
+     <string notr="true">font: 18pt &quot;NanumSquare&quot;;
 border:20px;
 background-color: rgb(255, 255, 255);
+
 </string>
     </property>
     <property name="currentIndex">
@@ -54,7 +58,7 @@ background-color: rgb(255, 255, 255);
        <rect>
         <x>20</x>
         <y>110</y>
-        <width>391</width>
+        <width>411</width>
         <height>471</height>
        </rect>
       </property>
@@ -69,6 +73,32 @@ background-color: rgb(255, 255, 255);
       </property>
       <property name="toolTip">
        <string/>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QListWidget{
+	font: 18pt &quot;나눔스퀘어_ac Bold&quot;;
+}
+
+QListWidget::item::hover{
+	background-color:#fae699;
+
+}
+QListWidget::item::clicked{
+	color:#000000;
+
+
+}
+QListWidget::item{
+	background-color:#fad390;
+	border-radius: 30px;
+	height:70px;
+
+
+}
+</string>
       </property>
       <property name="midLineWidth">
        <number>0</number>
@@ -90,6 +120,9 @@ background-color: rgb(255, 255, 255);
       </property>
       <property name="layoutMode">
        <enum>QListView::Batched</enum>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
       </property>
       <item>
        <property name="text">
@@ -123,13 +156,36 @@ background-color: rgb(255, 255, 255);
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>670</y>
-        <width>391</width>
+        <y>760</y>
+        <width>411</width>
         <height>471</height>
        </rect>
       </property>
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QListWidget{
+	font: 18pt &quot;나눔스퀘어_ac Bold&quot;;
+}
+
+QListWidget::item::hover{
+	background-color:#fae699;
+
+}
+QListWidget::item::clicked{
+	color:#000000;
+
+
+}
+QListWidget::item{
+	background-color:#fad390;
+	border-radius: 30px;
+	height:70px;
+
+
+}
+</string>
       </property>
       <property name="midLineWidth">
        <number>0</number>
@@ -169,20 +225,17 @@ background-color: rgb(255, 255, 255);
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>30</y>
+        <y>80</y>
         <width>231</width>
-        <height>51</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 15pt &quot;NanumSquare&quot;;
-border:20px;
-border-radius: 20px;
-background-color: rgb(225, 225, 225);
+       <string notr="true">font: 12pt &quot;NanumSquare&quot;;
 </string>
       </property>
       <property name="text">
-       <string>파일입력</string>
+       <string>파일</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -191,17 +244,14 @@ background-color: rgb(225, 225, 225);
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>600</y>
+        <x>110</x>
+        <y>730</y>
         <width>231</width>
-        <height>51</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 15pt &quot;NanumSquare&quot;;
-border:20px;
-border-radius: 20px;
-background-color: rgb(225, 225, 225);
+       <string notr="true">font: 12pt &quot;NanumSquare&quot;;
 </string>
       </property>
       <property name="text">
@@ -209,6 +259,22 @@ background-color: rgb(225, 225, 225);
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>646</y>
+        <width>371</width>
+        <height>10</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#e3e3e3</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -221,9 +287,35 @@ background-color: rgb(225, 225, 225);
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>401</width>
+        <width>411</width>
         <height>861</height>
        </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>3</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QListWidget{
+	font: 18pt &quot;나눔스퀘어_ac Bold&quot;;
+}
+
+QListWidget::item::hover{
+	background-color:#fae699;
+
+}
+QListWidget::item::clicked{
+	color:#000000;
+
+
+}
+QListWidget::item{
+	background-color:#fad390;
+	border-radius: 30px;
+	height:70px;
+
+
+}
+</string>
       </property>
       <property name="dragDropMode">
        <enum>QAbstractItemView::DragOnly</enum>
@@ -231,6 +323,15 @@ background-color: rgb(225, 225, 225);
       <item>
        <property name="text">
         <string>번역</string>
+       </property>
+       <property name="toolTip">
+        <string extracomment="번역"/>
+       </property>
+       <property name="statusTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
        </property>
       </item>
       <item>
@@ -265,7 +366,7 @@ background-color: rgb(225, 225, 225);
       </item>
       <item>
        <property name="text">
-        <string>Text to Image</string>
+        <string>Image Generation</string>
        </property>
       </item>
      </widget>
@@ -281,11 +382,28 @@ background-color: rgb(225, 225, 225);
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 25pt &quot;NanumSquare&quot;;
+     <string notr="true">
+
+
+QListWidget{
+	font: 18pt &quot;나눔스퀘어_ac Bold&quot;;
 border:20px;
 border-radius: 20px;
 background-color:rgb(255,255,255);
+textAlign:center;
+}
 
+QListWidget::item::hover{
+	background-color:#fae699;
+
+}
+QListWidget::item{
+	background-color:#fad390;
+	border-radius: 10px;
+	height:70px;
+
+
+}
 </string>
     </property>
     <property name="dragEnabled">

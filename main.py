@@ -1,8 +1,10 @@
 import os
 import sys
 from PyQt5.QtWidgets import *
-from PyQt5 import QtWidgets, uic,QtCore
-import input_text, RecorD
+from PyQt5 import QtWidgets, uic,QtCore,QtGui
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+import  RecorD
 from input_text import TextDialog
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
@@ -14,14 +16,17 @@ class WindowClass(QMainWindow, form_class):
         self.setupUi(self)
         self.initUI()
         # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.text=""
+
+    def initUI(self):
         self.mainList.itemDoubleClicked.connect(self.chkItemDoubleClicked)
         self.runBtn.clicked.connect(self.runModel)
+        
+        self.fileList.setSpacing(8)
+        self.inputList.setSpacing(8)
+        self.modelList.setSpacing(8)
+        self.mainList.setSpacing(8)
 
-        self.fileList.setSpacing(5)
-        self.inputList.setSpacing(5)
-        self.modelList.setSpacing(5)
-        self.text=""
-    def
     def chkItemDoubleClicked(self):
         rowNum=self.mainList.currentRow()
         rowText=self.mainList.currentItem().text()
