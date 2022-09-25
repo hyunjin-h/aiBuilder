@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2572</width>
-    <height>1607</height>
+    <width>2549</width>
+    <height>1530</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -47,7 +47,7 @@ background-color: rgb(255, 255, 255);
 </string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="inputTab">
      <attribute name="title">
@@ -179,7 +179,7 @@ QListWidget::item::clicked{
 
 }
 QListWidget::item{
-	background-color:#fad390;
+	background-color:#f8c291;
 	border-radius: 30px;
 	height:70px;
 
@@ -309,7 +309,7 @@ QListWidget::item::clicked{
 
 }
 QListWidget::item{
-	background-color:#fad390;
+	background-color:#b8e994;
 	border-radius: 30px;
 	height:70px;
 
@@ -381,6 +381,9 @@ QListWidget::item{
       <height>1301</height>
      </rect>
     </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">
 
@@ -404,19 +407,23 @@ QListWidget::item{
 
 
 }
+
 </string>
     </property>
     <property name="dragEnabled">
      <bool>false</bool>
     </property>
     <property name="dragDropOverwriteMode">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="dragDropMode">
-     <enum>QAbstractItemView::DropOnly</enum>
+     <enum>QAbstractItemView::DragDrop</enum>
     </property>
     <property name="defaultDropAction">
      <enum>Qt::MoveAction</enum>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
     </property>
     <property name="movement">
      <enum>QListView::Free</enum>
@@ -440,7 +447,7 @@ QListWidget::item{
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="resetBtn">
     <property name="geometry">
      <rect>
       <x>520</x>
@@ -459,20 +466,6 @@ font: 14pt &quot;NanumSquare&quot;;
     </property>
     <property name="text">
      <string>Reset</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="output" native="true">
-    <property name="geometry">
-     <rect>
-      <x>1170</x>
-      <y>80</y>
-      <width>1341</width>
-      <height>1421</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(255,255,255);
-border-radius:20px;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -513,6 +506,17 @@ font: 14pt &quot;NanumSquare&quot;;
     <property name="text">
      <string>Run</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1190</x>
+      <y>460</y>
+      <width>621</width>
+      <height>781</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="plyOut"/>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
