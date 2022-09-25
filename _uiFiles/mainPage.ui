@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>2549</width>
-    <height>1530</height>
+    <height>1517</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -33,7 +33,7 @@ background-color:#6a89cc;</string>
       <x>40</x>
       <y>40</y>
       <width>451</width>
-      <height>1461</height>
+      <height>1441</height>
      </rect>
     </property>
     <property name="toolTipDuration">
@@ -47,7 +47,7 @@ background-color: rgb(255, 255, 255);
 </string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="inputTab">
      <attribute name="title">
@@ -453,7 +453,7 @@ QListWidget::item{
       <x>520</x>
       <y>1400</y>
       <width>191</width>
-      <height>101</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -492,7 +492,7 @@ font: 14pt &quot;NanumSquare&quot;;
       <x>730</x>
       <y>1400</y>
       <width>401</width>
-      <height>101</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -507,16 +507,46 @@ font: 14pt &quot;NanumSquare&quot;;
      <string>Run</string>
     </property>
    </widget>
-   <widget class="QWidget" name="formLayoutWidget">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>1190</x>
-      <y>460</y>
-      <width>621</width>
-      <height>781</height>
+      <x>1160</x>
+      <y>80</y>
+      <width>1111</width>
+      <height>1401</height>
      </rect>
     </property>
-    <layout class="QFormLayout" name="plyOut"/>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 20px;
+background-color:rgb(255,255,255);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>471</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="plyOut"/>
+    </widget>
+    <widget class="QTextBrowser" name="outputText">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>560</y>
+       <width>971</width>
+       <height>341</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

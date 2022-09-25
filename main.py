@@ -1,6 +1,7 @@
 import os
 import sys
-import webbrowser
+import pygame
+
 
 from PyQt5.QtWidgets import *
 from PyQt5 import QtWidgets, uic,QtCore,QtGui
@@ -8,7 +9,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import  RecorD
 from input_text import TextDialog
-import tts, stt
+from select_lang import LangDialog
+import tts, stt,text_translation,select_lang,input_text
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -21,6 +23,7 @@ class WindowClass(QMainWindow, form_class):
         # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.txt=""
         self.fileDir=''
+
 
     def initUI(self):
         self.mainList.itemDoubleClicked.connect(self.chkItemDoubleClicked)
@@ -43,8 +46,7 @@ class WindowClass(QMainWindow, form_class):
             self.inputTxt=TextDialog()
             self.inputTxt.exec()
             self.txt=self.inputTxt.text
-            print(self.txt)
-            self.show()
+            self.source=input_text.lang
 
         elif(rowText=='image'):
             self.fileopen()
@@ -65,8 +67,11 @@ class WindowClass(QMainWindow, form_class):
                 print(filepath)
             self.fileDir=filepath
 
-        elif(rowText=='TTS'):
-            print(rowText)
+        elif(rowText=='번역'):
+            self.langD = LangDialog()
+            self.langD.exec()
+            self.target=select_lang.mainlang
+
         elif(rowText=='STT'):
             print(rowText)
         elif(rowText=='image'):
@@ -82,20 +87,46 @@ class WindowClass(QMainWindow, form_class):
                 tts.tts(self.txt)
                 self.fileDir='soundFiles/output.mp3'
                 if(lw.item(last).text()=='TTS'):
-                    btnPlay=QPushButton("play")
+                    btnPlay=QPushButton("▶")
                     btnPlay.setMaximumWidth(250)
                     btnPlay.setMinimumHeight(250)
+                    btnPlay.setStyleSheet(
+                        '''
+                        QPushButton{
+                        font: 30pt;
+                        border-radius: 20px;
+                        background-color: #6a89cc;
+                        color: rgb(0,0,0);
+                        text-align: bottom;
+                        }
+                        QPushButton:hover{
+                        font: 30pt;
+                        border-radius: 20px;
+                        background-color: #535c68;
+                        color: rgb(255, 255, 255);
+                        }
+                        QPushButton:pressed{
+                        background-color: rgb(255, 255, 255);
+                        border-style: inset;
+                        color: rgb(0,0,0);
+                        }
+
+                        
+                        ''')
                     self.plyOut.addWidget(btnPlay)
                     btnPlay.clicked.connect(lambda :self.play())
-                    def play():
-                        webbrowser.open(self.fileDir)
+
 
 
             elif(i=='STT'):
                 stt.stt(self.fileDir)
                 print(stt.stt_res)
+                if (lw.item(last).text() == 'TTS'):
+                    self.outputText.setText(stt.stt_res)
             elif(i=='번역'):
-                print(items[i + 1])
+                print(self.text,self.source,self.target)
+                text_translation.trans(self.text,self.source,self.target)
+
             elif(i=='이미지번역'):
                 print(items[i + 1])
             elif(i=='OCR'):
@@ -108,7 +139,10 @@ class WindowClass(QMainWindow, form_class):
             else:
                 pass
 
-
+    def play(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load(self.fileDir)
+        pygame.mixer.music.play()
     def clear(self):
         self.txt = ''
         self.fileDir = ''

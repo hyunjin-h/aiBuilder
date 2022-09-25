@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="langCheck">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>220</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 12pt &quot;이순신 돋움체 M&quot;;
+border-radius: 20px;
+background-color: rgb(255, 255, 255);
+color:  rgb(114, 119, 216);</string>
+   </property>
+   <property name="text">
+    <string>확인</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>30</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;이순신 돋움체 M&quot;;
+color: rgb(83, 83, 83);</string>
+   </property>
+   <property name="text">
+    <string>언어 선택</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="selectLang">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>110</y>
+     <width>261</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 16pt;
+
+background-color: rgb(255, 255, 255);
+color: rgb(69, 69, 69);</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>한국어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>영어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>일본어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>중국어-간체</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>중국어-번체</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>베트남어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>인도네시아어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>태국어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>독일어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>러시아어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>스페인어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>이탈리아어</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>프랑스어</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
