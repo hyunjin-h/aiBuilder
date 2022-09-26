@@ -1,7 +1,9 @@
 import os
 import sys
 import urllib.request
+import json
 def trans(text,source,target):
+    global trans_res
     client_id = "pficodqpxs"
     client_secret = "aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
 
@@ -15,6 +17,11 @@ def trans(text,source,target):
     rescode = response.getcode()
     if(rescode==200):
         response_body = response.read()
-        print(response_body.decode('utf-8'))
+        trans_res = response_body.decode('utf-8')
+        trans_res = json.loads(trans_res)
+        trans_res = trans_res['message']['result']['translatedText']
+
+        print(trans_res)
+
     else:
         print("Error Code:" + rescode)

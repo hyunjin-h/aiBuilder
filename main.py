@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
-import tts, stt,text_translation,select_lang,input_text
+import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -23,6 +23,8 @@ class WindowClass(QMainWindow, form_class):
         # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.txt=""
         self.fileDir=''
+        self.source=''
+        self.target=''
 
 
     def initUI(self):
@@ -46,7 +48,9 @@ class WindowClass(QMainWindow, form_class):
             self.inputTxt=TextDialog()
             self.inputTxt.exec()
             self.txt=self.inputTxt.text
-            self.source=input_text.lang
+            lang_detect.detect_lang(self.txt)
+            self.source=lang_detect.lang
+
 
         elif(rowText=='image'):
             self.fileopen()
@@ -55,7 +59,7 @@ class WindowClass(QMainWindow, form_class):
         elif(rowText=='camera'):
             os.system('cam.py')
             try:
-                inputImg='image/input_photo.jpg'
+                self.fileDir='image/input_photo.jpg'
             except:
                 pass
         elif(rowText=='mic'):
@@ -84,7 +88,7 @@ class WindowClass(QMainWindow, form_class):
         items = [lw.item(x).text() for x in range(lw.count())]
         for i in items:
             if(i=='TTS'):
-                tts.tts(self.txt)
+                tts.tts(self.txt,self.source)
                 self.fileDir='soundFiles/output.mp3'
                 if(lw.item(last).text()=='TTS'):
                     btnPlay=QPushButton("▶")
@@ -116,23 +120,34 @@ class WindowClass(QMainWindow, form_class):
                     self.plyOut.addWidget(btnPlay)
                     btnPlay.clicked.connect(lambda :self.play())
 
-
-
             elif(i=='STT'):
                 stt.stt(self.fileDir)
-                print(stt.stt_res)
-                if (lw.item(last).text() == 'TTS'):
+                self.txt=stt.stt_res
+                self.source='ko' #추후에 직접 입력할 수 있도록 할것임
+                if (lw.item(last).text() == 'STT'):
                     self.outputText.setText(stt.stt_res)
             elif(i=='번역'):
-                print(self.text,self.source,self.target)
-                text_translation.trans(self.text,self.source,self.target)
-
+                text_translation.trans(self.txt,self.source,self.target)
+                self.source=self.target
+                trans=text_translation.trans_res
+                self.txt=trans
+                if (lw.item(last).text() == '번역'):
+                    self.outputText.setText(trans)
             elif(i=='이미지번역'):
                 print(items[i + 1])
             elif(i=='OCR'):
-                print(items[i + 1])
+                OCR.ocr(self.fileDir)
+                print(OCR.ocr_res)
+                if (lw.item(last).text() == 'OCR'):
+                    self.outputText.setText(OCR.ocr_res)
             elif(i=='Object Detection'):
-                print(items[i + 1])
+                detection.object_detect(self.fileDir)
+                obj_res = ' '.join(s for s in detection.obj_res)
+                self.txt=obj_res
+                self.source='en'
+                if (lw.item(last).text() == 'Object Detection'):
+                    self.ouputText.setText(obj_res)
+
             elif(i=='Image Generation'):
                 print(items[i + 1])
 
@@ -147,15 +162,15 @@ class WindowClass(QMainWindow, form_class):
         self.txt = ''
         self.fileDir = ''
         self.mainList.clear()
+        self.outputText.clear()
 
 
 
     def fileopen(self):
         global filename
         filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File')
-        global filepath
-        filepath = f'{filename[0]}'
-        print(filepath)
+        self.fileDir = f'{filename[0]}'
+        print(self.fileDir)
 
 
 
