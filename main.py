@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
-import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect
+import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -57,7 +57,8 @@ class WindowClass(QMainWindow, form_class):
         elif(rowText=='sound'):
             self.fileopen()
         elif(rowText=='camera'):
-            os.system('cam.py')
+
+            os.system('python cam.py')
             try:
                 self.fileDir='image/input_photo.jpg'
             except:
@@ -76,8 +77,12 @@ class WindowClass(QMainWindow, form_class):
             self.langD.exec()
             self.target=select_lang.mainlang
 
-        elif(rowText=='STT'):
-            print(rowText)
+        elif(rowText=='draw'):
+            os.system('python drawing.py')
+            try:
+                self.fileDir='image/i.png'
+            except:
+                pass
         elif(rowText=='image'):
             print(rowText)
 
@@ -146,10 +151,21 @@ class WindowClass(QMainWindow, form_class):
                 self.txt=obj_res
                 self.source='en'
                 if (lw.item(last).text() == 'Object Detection'):
-                    self.ouputText.setText(obj_res)
+                    self.outputText.setText(self.txt)
 
-            elif(i=='Image Generation'):
-                print(items[i + 1])
+            elif(i=='Face Recognition'):
+
+                face.face(self.fileDir)
+                face_result=face.face_result
+                self.txt=face_result
+                if (lw.item(last).text() == 'Face Recognition'):
+                    self.outputText.setText(self.txt)
+
+
+
+
+
+
 
             else:
                 pass

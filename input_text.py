@@ -12,7 +12,7 @@ class TextDialog(QDialog,form_text):  # 텍스트 입력할 수 있는 Dialog
         self.initUI()
         self.show()
 
-        self.text = ""
+        # self.text = ""
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
 
     def initUI(self):
