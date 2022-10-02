@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
         MainWindow.setMaximumSize(QtCore.QSize(1000, 1000))
         MainWindow.setStyleSheet("QWidget#centralwidget{background-color: rgb(230,230,255);}\n"
 "")
-        # MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -87,7 +87,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "📷"))
         self.pushButton_2.setText(_translate("MainWindow", "▶"))
-        self.pushButton_3.setText(_translate("MainWindow", "Exit"))
+        self.pushButton_3.setText(_translate("MainWindow", "확인"))
 
 
 class Work(QThread):

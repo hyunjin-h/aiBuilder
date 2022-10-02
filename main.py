@@ -35,7 +35,43 @@ class WindowClass(QMainWindow, form_class):
         self.fileList.setSpacing(8)
         self.inputList.setSpacing(8)
         self.modelList.setSpacing(8)
-        self.mainList.setSpacing(8)
+        self.mainList.setSpacing(10)
+
+        l1 = QListWidgetItem(QIcon('image/text.png'), "text")
+        l2 = QListWidgetItem(QIcon('image/image.png'), "image")
+        l3 = QListWidgetItem(QIcon('image/sound.png'), "sound")
+        self.fileList.insertItem(0, l1)
+        self.fileList.insertItem(1,l2)
+        self.fileList.insertItem(2,l3)
+
+        i1 = QListWidgetItem(QIcon('image/camera.png'), "camera")
+        i2 = QListWidgetItem(QIcon('image/mic.png'), "mic")
+        i3 = QListWidgetItem(QIcon('image/draw.png'), "draw")
+        self.inputList.insertItem(0, i1)
+        self.inputList.insertItem(1, i2)
+        self.inputList.insertItem(2, i3)
+
+        m1 = QListWidgetItem(QIcon('image/trans.png'), "번역")
+        m2 = QListWidgetItem(QIcon('image/imgtrans.png'), "이미지번역")
+        m3 = QListWidgetItem(QIcon('image/tts.png'), "TTS")
+        m4 = QListWidgetItem(QIcon('image/stt.png'), "STT")
+        m5 = QListWidgetItem(QIcon('image/ocr.png'), "OCR")
+        m6 = QListWidgetItem(QIcon('image/obj.png'), "Object Detection")
+        m7 = QListWidgetItem(QIcon('image/face.png'), "Face Recognition")
+        m8 = QListWidgetItem(QIcon('image/imggen.png'), "Image Generation")
+        m9 = QListWidgetItem(QIcon('image/cal.png'), "AI calculator")
+        self.modelList.insertItem(0, m1)
+        self.modelList.insertItem(1, m2)
+        self.modelList.insertItem(2, m3)
+        self.modelList.insertItem(3, m4)
+        self.modelList.insertItem(4, m5)
+        self.modelList.insertItem(5, m6)
+        self.modelList.insertItem(6, m7)
+        self.modelList.insertItem(7, m8)
+        self.modelList.insertItem(8, m9)
+
+
+
 
 
     def chkItemDoubleClicked(self):
@@ -160,12 +196,6 @@ class WindowClass(QMainWindow, form_class):
                 self.txt=face_result
                 if (lw.item(last).text() == 'Face Recognition'):
                     self.outputText.setText(self.txt)
-
-
-
-
-
-
 
             else:
                 pass
