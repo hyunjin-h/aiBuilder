@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1276</width>
-    <height>710</height>
+    <width>1273</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="font">
@@ -22,19 +22,23 @@
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+background-color:#89a3e3;</string>
+  </property>
   <widget class="QPushButton" name="textCheck">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>550</y>
-     <width>451</width>
-     <height>121</height>
+     <x>1050</x>
+     <y>600</y>
+     <width>191</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;NanumSquare&quot;;
+    <string notr="true">font: 15pt &quot;NanumSquare&quot;;
 border:20px;
-border-radius:20px;
+border-radius:30px;
 background-color: rgb(255, 255, 255);
 </string>
    </property>
@@ -46,19 +50,35 @@ background-color: rgb(255, 255, 255);
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>20</y>
-     <width>1221</width>
-     <height>491</height>
+     <y>90</y>
+     <width>1211</width>
+     <height>481</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 25pt &quot;NanumSquare&quot;;
-border:20px;
-background-color: rgb(255, 255, 255);
+border-radius:20px;
+background-color:#ecf0f1;
 </string>
    </property>
    <property name="lineWidth">
     <number>1</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>261</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 12pt &quot;NanumSquare&quot;;</string>
+   </property>
+   <property name="text">
+    <string>텍스트를 입력하세요</string>
    </property>
   </widget>
  </widget>
