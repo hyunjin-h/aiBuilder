@@ -11,6 +11,7 @@ import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
 import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model
+import severConnect
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -206,6 +207,12 @@ class WindowClass(QMainWindow, form_class):
                 self.txt=face_result
                 if (lw.item(last).text() == 'Face Recognition'):
                     self.outputText.setText(self.txt)
+
+            # elif (i == 'Image Generation'):
+
+            #     try:
+            #     except:
+
             elif (i == 'AI calculator'):
                 try:
                     final = model.test_pipeline_equation(self.fileDir)
@@ -213,6 +220,8 @@ class WindowClass(QMainWindow, form_class):
                 except:
                     print("error")
                     self.outputText.setText("해당 수식을 인식할 수 없습니다.")
+
+
             else:
                 pass
 

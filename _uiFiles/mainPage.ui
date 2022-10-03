@@ -498,8 +498,8 @@ background-color:#ecf0f1;</string>
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>160</y>
+       <x>50</x>
+       <y>460</y>
        <width>471</width>
        <height>491</height>
       </rect>
@@ -510,7 +510,7 @@ background-color:#ecf0f1;</string>
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>350</y>
+       <y>70</y>
        <width>851</width>
        <height>591</height>
       </rect>
