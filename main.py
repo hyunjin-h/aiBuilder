@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
-import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face
+import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
@@ -20,7 +20,7 @@ class WindowClass(QMainWindow, form_class):
         super().__init__()
         self.setupUi(self)
         self.initUI()
-        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.txt=""
         self.fileDir=''
         self.source=''
@@ -31,6 +31,15 @@ class WindowClass(QMainWindow, form_class):
         self.mainList.itemDoubleClicked.connect(self.chkItemDoubleClicked)
         self.runBtn.clicked.connect(self.runModel)
         self.resetBtn.clicked.connect(self.clear)
+        self.closeBtn.clicked.connect(self.close)
+
+        self.closeBtn.setStyleSheet('''
+                                    QPushButton{
+                                    background-color: transparent;
+                                    border-image:url("image/close.png");
+                                    }
+                                    '''
+                                    )
         
         self.fileList.setSpacing(8)
         self.inputList.setSpacing(8)
@@ -71,7 +80,8 @@ class WindowClass(QMainWindow, form_class):
         self.modelList.insertItem(8, m9)
 
 
-
+    def close(self):
+        sys.exit()
 
 
     def chkItemDoubleClicked(self):
@@ -196,7 +206,13 @@ class WindowClass(QMainWindow, form_class):
                 self.txt=face_result
                 if (lw.item(last).text() == 'Face Recognition'):
                     self.outputText.setText(self.txt)
-
+            elif (i == 'AI calculator'):
+                try:
+                    final = model.test_pipeline_equation(self.fileDir)
+                    self.outputText.setText(final)
+                except:
+                    print("error")
+                    self.outputText.setText("해당 수식을 인식할 수 없습니다.")
             else:
                 pass
 
