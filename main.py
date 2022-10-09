@@ -10,7 +10,8 @@ from PyQt5.QtCore import *
 import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
-import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model
+from odOut import odDialog
+import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model,dalle
 import severConnect
 
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
@@ -45,7 +46,7 @@ class WindowClass(QMainWindow, form_class):
         self.fileList.setSpacing(8)
         self.inputList.setSpacing(8)
         self.modelList.setSpacing(8)
-        self.mainList.setSpacing(10)
+        self.mainList.setSpacing(20)
 
         l1 = QListWidgetItem(QIcon('image/text.png'), "text")
         l2 = QListWidgetItem(QIcon('image/image.png'), "image")
@@ -70,6 +71,10 @@ class WindowClass(QMainWindow, form_class):
         m7 = QListWidgetItem(QIcon('image/face.png'), "Face Recognition")
         m8 = QListWidgetItem(QIcon('image/imggen.png'), "Image Generation")
         m9 = QListWidgetItem(QIcon('image/cal.png'), "AI calculator")
+        m10 = QListWidgetItem( "celebrity")
+        m11 = QListWidgetItem( "pose estimation")
+        m12 = QListWidgetItem("summary")
+
         self.modelList.insertItem(0, m1)
         self.modelList.insertItem(1, m2)
         self.modelList.insertItem(2, m3)
@@ -79,6 +84,9 @@ class WindowClass(QMainWindow, form_class):
         self.modelList.insertItem(6, m7)
         self.modelList.insertItem(7, m8)
         self.modelList.insertItem(8, m9)
+        self.modelList.insertItem(9,m10)
+        self.modelList.insertItem(10, m11)
+        self.modelList.insertItem(11, m12)
 
 
     def close(self):
@@ -132,6 +140,9 @@ class WindowClass(QMainWindow, form_class):
                 pass
         elif(rowText=='image'):
             print(rowText)
+        elif (rowText == 'Object Detection'):
+            self.odo = odDialog()
+            self.odo.exec()
 
     def runModel(self):
         lw = self.mainList
@@ -144,8 +155,8 @@ class WindowClass(QMainWindow, form_class):
                 self.fileDir='soundFiles/output.mp3'
                 if(lw.item(last).text()=='TTS'):
                     btnPlay=QPushButton("▶")
-                    btnPlay.setMaximumWidth(250)
-                    btnPlay.setMinimumHeight(250)
+                    btnPlay.setMaximumWidth(100)
+                    btnPlay.setMinimumHeight(100)
                     btnPlay.setStyleSheet(
                         '''
                         QPushButton{
@@ -208,10 +219,19 @@ class WindowClass(QMainWindow, form_class):
                 if (lw.item(last).text() == 'Face Recognition'):
                     self.outputText.setText(self.txt)
 
-            # elif (i == 'Image Generation'):
+            elif (i == 'Image Generation'):
+                try:
+                    dalle.dalle(self.txt)
+                    self.fileDir = 'image/dalle.png'
+                    self.outputImage.setPixmap(QtGui.QPixmap(self.fileDir))
+                except:
+                    print("error")
+                    self.outputText.setText("해당 수식을 인식할 수 없습니다.")
 
-            #     try:
-            #     except:
+
+
+
+
 
             elif (i == 'AI calculator'):
                 try:
@@ -234,6 +254,7 @@ class WindowClass(QMainWindow, form_class):
         self.fileDir = ''
         self.mainList.clear()
         self.outputText.clear()
+        self.outputImage.clear()
 
 
 

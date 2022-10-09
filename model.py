@@ -8,8 +8,6 @@ import pandas as pd
 import h5py
 import os
 
-
-
 os.environ["CUDA_VISIBLE_DEVICES"]= "-1"
 
 model = keras.models.load_model("model.h5")

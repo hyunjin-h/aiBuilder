@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtGui import QPixmap
 import os
+from PyQt5 import QtCore
 import sys
 
 from PyQt5.QtCore import *
@@ -16,7 +17,7 @@ mainUI = "_uiFiles/draw.ui"
 class MainDialog(QDialog):
     def __init__(self):
         file_path = "image/i.png"
-
+        # self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         if os.path.exists(file_path):
             os.remove(file_path)
         QDialog.__init__(self, None)
@@ -159,6 +160,8 @@ class MainDialog(QDialog):
 
         if fpath:
             self.image.save(fpath)
+
+        self.accept()
 
     def clear(self):
         self.image.fill(Qt.white)
