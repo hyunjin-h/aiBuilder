@@ -10,6 +10,7 @@ import os
 
 os.environ["CUDA_VISIBLE_DEVICES"]= "-1"
 
+
 model = keras.models.load_model("model.h5")
 
 def test_pipeline_equation(image_path):

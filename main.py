@@ -11,9 +11,7 @@ import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
 from odOut import odDialog
-import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model,dalle
-import severConnect
-
+import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model,dalle,odOut,plotter
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
 
@@ -88,6 +86,9 @@ class WindowClass(QMainWindow, form_class):
         self.modelList.insertItem(10, m11)
         self.modelList.insertItem(11, m12)
 
+        self.btnList=[]
+        self.pltBtn.itemDoubleClicked.connect(self.odBtnClicked)
+        self.pltBtn.setSpacing(20)
 
     def close(self):
         sys.exit()
@@ -155,15 +156,15 @@ class WindowClass(QMainWindow, form_class):
                 self.fileDir='soundFiles/output.mp3'
                 if(lw.item(last).text()=='TTS'):
                     btnPlay=QPushButton("▶")
-                    btnPlay.setMaximumWidth(100)
-                    btnPlay.setMinimumHeight(100)
+                    btnPlay.setMaximumWidth(300)
+                    btnPlay.setMinimumHeight(300)
                     btnPlay.setStyleSheet(
                         '''
                         QPushButton{
                         font: 30pt;
                         border-radius: 20px;
                         background-color: #6a89cc;
-                        color: rgb(0,0,0);
+                        color: rgb(255,255,255);
                         text-align: bottom;
                         }
                         QPushButton:hover{
@@ -177,11 +178,10 @@ class WindowClass(QMainWindow, form_class):
                         border-style: inset;
                         color: rgb(0,0,0);
                         }
-
                         
                         ''')
                     self.plyOut.addWidget(btnPlay)
-                    btnPlay.clicked.connect(lambda :self.play())
+                    btnPlay.clicked.connect(self.play)
 
             elif(i=='STT'):
                 stt.stt(self.fileDir)
@@ -205,14 +205,16 @@ class WindowClass(QMainWindow, form_class):
                     self.outputText.setText(OCR.ocr_res)
             elif(i=='Object Detection'):
                 detection.object_detect(self.fileDir)
-                obj_res = ' '.join(s for s in detection.obj_res)
-                self.txt=obj_res
+                obj_res_txt = ' '.join(s for s in detection.obj_res_name)
+                self.txt=obj_res_txt
                 self.source='en'
                 if (lw.item(last).text() == 'Object Detection'):
-                    self.outputText.setText(self.txt)
+                    if(odOut.odod==0):
+                        self.outputText.setText(self.txt)
+                    if (odOut.odod == 1):
+                        self.createBtn()
 
             elif(i=='Face Recognition'):
-
                 face.face(self.fileDir)
                 face_result=face.face_result
                 self.txt=face_result
@@ -244,8 +246,19 @@ class WindowClass(QMainWindow, form_class):
 
             else:
                 pass
+    def createBtn(self):
+        for i in range(detection.obj_cnt):
+            self.btnList.append(QListWidgetItem(detection.obj_res_name[i]))
+            self.pltBtn.insertItem(i, self.btnList[i])
+    def odBtnClicked(self):
+        od_rowNum = self.pltBtn.currentRow()
+        od_rowText = self.pltBtn.currentItem().text()
+        print(str(od_rowNum) + " : " + od_rowText)
+        if(od_rowNum>=0):
+            plotter.Plotter(od_rowNum)
 
     def play(self):
+        print(self.fileDir)
         pygame.mixer.init()
         pygame.mixer.music.load(self.fileDir)
         pygame.mixer.music.play()
@@ -255,6 +268,7 @@ class WindowClass(QMainWindow, form_class):
         self.mainList.clear()
         self.outputText.clear()
         self.outputImage.clear()
+        self.pltBtn.clear()
 
 
 
