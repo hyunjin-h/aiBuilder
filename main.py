@@ -40,22 +40,30 @@ class WindowClass(QMainWindow, form_class):
                                     }
                                     '''
                                     )
-        
+
         self.fileList.setSpacing(8)
         self.inputList.setSpacing(8)
         self.modelList.setSpacing(8)
         self.mainList.setSpacing(20)
-
+        QToolTip.setFont(QFont('나눔스퀘어_ac', 15))
         l1 = QListWidgetItem(QIcon('image/text.png'), "text")
+        l1.setToolTip('<font color=blue>텍스트</font><br>텍스트 입력 ')
+
         l2 = QListWidgetItem(QIcon('image/image.png'), "image")
+        l2.setToolTip('<font color=blue>이미지</font><br>로컬 이미지 파일')
         l3 = QListWidgetItem(QIcon('image/sound.png'), "sound")
+        l3.setToolTip('로컬 음성 파일')
+
         self.fileList.insertItem(0, l1)
         self.fileList.insertItem(1,l2)
         self.fileList.insertItem(2,l3)
 
         i1 = QListWidgetItem(QIcon('image/camera.png'), "camera")
+        i1.setToolTip('웹캠을 이용한 실시간 캡처')
         i2 = QListWidgetItem(QIcon('image/mic.png'), "mic")
+        i2.setToolTip('로컬 음성 파일')
         i3 = QListWidgetItem(QIcon('image/draw.png'), "draw")
+        i3.setToolTip('로컬 음성 파일')
         self.inputList.insertItem(0, i1)
         self.inputList.insertItem(1, i2)
         self.inputList.insertItem(2, i3)

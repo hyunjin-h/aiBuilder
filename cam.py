@@ -103,7 +103,7 @@ class Work(QThread):
     Imageupd = pyqtSignal(QImage)
     def run(self):
         self.hilo_corriendo = True
-        cap = cv2.VideoCapture(1)
+        cap = cv2.VideoCapture(1,cv2.CAP_DSHOW)
         while self.hilo_corriendo:
             ret, frame = cap.read()
 
