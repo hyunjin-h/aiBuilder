@@ -31,6 +31,7 @@ def ocr(imgFile):
     response = requests.request("POST", api_url, headers=headers, data = payload, files = files)
 
     ocr_res = json.loads(response.text)
+    print(ocr_res)
     data = ocr_res['images'][0]['fields']
 
     ocr_res = ' '.join([_['inferText'] for _ in data])

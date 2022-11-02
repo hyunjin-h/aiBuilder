@@ -308,7 +308,7 @@ QListView::text {
        </rect>
       </property>
       <property name="toolTipDuration">
-       <number>3</number>
+       <number>5</number>
       </property>
       <property name="styleSheet">
        <string notr="true">QListWidget{
@@ -330,7 +330,8 @@ QListWidget::item{
 	background-color:#a4c3b2;
 	border-radius: 50px;
 	height:80px;
-	padding:10px;
+padding:10px;
+
 
 }
 QListView::icon {
@@ -338,7 +339,70 @@ QListView::icon {
 }
 QListView::text {
     left: 70px;
-}</string>
+}
+
+QScrollBar:vertical {
+	border: none;
+    background:#ffdab9;
+    width: 25px;
+    margin: 15px 0 15px 0;
+	border-radius: 0px;
+ }
+
+/*  HANDLE BAR VERTICAL */
+QScrollBar::handle:vertical {	
+	background-color:#f8ad9d;
+	min-height: 30px;
+	border-radius: 7px;
+}
+QScrollBar::handle:vertical:hover{	
+	background-color: #f08080;
+}
+QScrollBar::handle:vertical:pressed {	
+	background-color: #8e9aaf;
+}
+
+/* BTN TOP - SCROLLBAR */
+QScrollBar::sub-line:vertical {
+	border: none;
+	background-color: #fbc4ab;
+	height: 20px;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+	subcontrol-position: top;
+	subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical:hover {	
+	background-color:#f08080;
+}
+QScrollBar::sub-line:vertical:pressed {	
+	background-color: #8e9aaf;
+}
+/* BTN BOTTOM - SCROLLBAR */
+QScrollBar::add-line:vertical {
+	border: none;
+	background-color: #fbc4ab;
+	height: 20px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	subcontrol-position: bottom;
+	subcontrol-origin: margin;
+}
+QScrollBar::add-line:vertical:hover {	
+	background-color: #f08080;
+}
+QScrollBar::add-line:vertical:pressed {	
+	background-color: #8e9aaf;
+}
+
+/* RESET ARROW */
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+	background: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}
+</string>
       </property>
       <property name="dragDropMode">
        <enum>QAbstractItemView::DragOnly</enum>
@@ -387,6 +451,7 @@ QListWidget::item{
 	border-radius: 10px;
 	height:90px;
    marigin-left:20px;
+
 
 
 

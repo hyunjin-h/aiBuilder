@@ -3,6 +3,7 @@ import sys
 import urllib.request
 
 def tts(text,lang):
+    global sound_path
     if lang == 'ko':
         voice = 'nara'
     elif lang == 'en':
@@ -23,7 +24,13 @@ def tts(text,lang):
     if(rescode==200):
         print("TTS mp3 저장")
         response_body = response.read()
-        with open('soundFiles/output.mp3', 'wb') as f:
+        path='soundFiles/output.mp3'
+        uniq=1
+        while os.path.exists(path):  # 동일한 파일명이 존재할 때
+            path = 'soundFiles/output(%d).mp3' % (uniq)  # 파일명(1) 파일명(2)...
+            uniq += 1
+        with open(path, 'wb') as f:
             f.write(response_body)
     else:
         print("Error Code:" + rescode)
+    sound_path=path

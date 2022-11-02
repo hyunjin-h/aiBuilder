@@ -8,34 +8,36 @@ import time
 import math
 import detection
 
-
-
-
-def Plotter(od_num):
-    # 사진을 object detection
-    boxes=detection.obj_res['predictions'][0]["detection_boxes"][od_num]
-    print(boxes)
-    # location에 크기와 좌표 저장
-    location = []
-    x1 = (boxes[0]) * 380
-    x2 = (boxes[2]) * 297
-    y1 = (boxes[1]) * 210
-    y2 = (boxes[3]) * 260
-    wid = x2 - x1
-    hei = y2 - y1
-    coord = [x1, x2, y1, y2, wid, hei]
-    location.append(coord)
-
+def Plotter(txt):
     # Open grbl serial port
     s = serial.Serial(port="COM7", baudrate=115200)
+    objR = detection.obj_res['predictions'][0]["detection_boxes"]
+    for i in range(detection.obj_cnt):
+        if (txt == objR[i]):
+            boxes = objR[i]
+            # # location에 크기와 좌표 저장
+            # location = []
+            x1 = (boxes[0]) * 380
+            x2 = (boxes[2]) * 297
+            y1 = (boxes[1]) * 210
+            y2 = (boxes[3]) * 260
+            wid = x2 - x1
+            hei = y2 - y1
+            # coord = [x1, x2, y1, y2, wid, hei]
+            # location.append(coord)
 
-    # Wake up grbl
-    s.write("\r\n\r\n".encode())
-    time.sleep(2)  # Wait for grbl to initialize
-    s.flushInput()  # Flush startup text in serial input
+            # Wake up grbl
+            s.write("\r\n\r\n".encode())
+            time.sleep(2)  # Wait for grbl to initialize
+            s.flushInput()  # Flush startup text in serial input
 
+            Plotter.one()
+            Plotter.initial()
+            Plotter.square()
+            Plotter.returnto()
+            time.sleep(2)
 
-    def square():
+    def square(wid, hei):
         gcode = "G21G91G1X{}Y-{}F2000".format(wid, wid) + '\n' + "G21G91G1X{}Y{}F2000".format(hei,
                                                                                               hei) + '\n' + "G21G91G1X-{}Y{}F2000".format(
             wid, wid) + '\n' + "G21G91G1X-{}Y-{}F1000".format(hei, hei) + '\n'
@@ -57,7 +59,3 @@ def Plotter(od_num):
         s.write(gcode.encode())
         return "now we have to draw."
 
-    one()
-    initial()
-    square()
-    returnto()
