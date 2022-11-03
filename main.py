@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 import cv2
 import pygame
@@ -255,16 +256,37 @@ class WindowClass(QMainWindow, form_class):
                 if (lw.item(last).text() == 'OCR'):
                     self.outputText.setText(self.txt)
             elif(i=='Object Detection'):
-                detection.object_detect(self.fileDir)
-                obj_res_txt = ' '.join(s for s in detection.obj_res_name)
-                ot=self.txt
-                self.txt = obj_res_txt
-                self.source='en'
+                if (odOut.odod == 0):
+                    detection.object_detect(self.fileDir)
+                    obj_res_txt = ' '.join(s for s in detection.obj_res_name)
+                    self.txt = obj_res_txt
+                    self.source = 'en'
+                if (odOut.odod == 1):
+                    # 카메라 촬영
+                    cap = cv2.VideoCapture(1,cv2.CAP_DSHOW)  # 노트북 웹캠을 카메라로 사용 #걍 카메라는 여기 1번으로 고치기
+                    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+                    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+                    start = time.time()
+                    while cv2.waitKey(33) < 0:
+                        ret, frame = cap.read()
+                        # cv2.imshow("VideoFrame", frame)
+                        end = time.time()
+                        if (end-start)>3:
+                            file = 'image/plotter.jpeg'
+                            cv2.imwrite(file, frame)
+                            print(file, ' saved')
+                            break
+                    cap.release()
+                    cv2.destroyAllWindows()
+                    self.fileDir='image/plotter.jpeg'
+                    detection.object_detect(self.fileDir)
+
+
                 if (lw.item(last).text() == 'Object Detection'):
                     if(odOut.odod==0):
                         self.outputText.setText(self.txt)
                     if (odOut.odod == 1):
-                        plotter.Plotter(ot)
+                        plotter.Plotter(self.txt)
 
             elif(i=='Face Recognition'):
                 face.face(self.fileDir)
@@ -314,7 +336,8 @@ class WindowClass(QMainWindow, form_class):
     #     print(str(od_rowNum) + " : " + od_rowText)
     #     if(od_rowNum>=0):
     #         plotter.Plotter(od_rowNum)
-
+    def timego(self):
+        time.sleep(2)
     def play(self):
         print(self.fileDir)
         pygame.mixer.init()
@@ -333,7 +356,10 @@ class WindowClass(QMainWindow, form_class):
         dir_s = 'C:/22_IF028/22_if028/soundFiles/'
         if os.path.exists(dir_s):
             for f in os.scandir(dir_s):
-                os.remove(f.path)
+                try:
+                    os.remove(f.path)
+                except:
+                    pass
             print('done')
         else:
             print('no')

@@ -1,6 +1,7 @@
 from flask import Flask
 import dalleMega
 from flask import send_file
+
 import json
 import base64
 
@@ -17,4 +18,4 @@ def file(text):
     return send_file(res, mimetype='image/jpeg')
 
 
-app.run(host = '0.0.0.0', port=5000)
+app.run(host = '0.0.0.0', port=5000,debug=True)

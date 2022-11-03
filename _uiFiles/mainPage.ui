@@ -546,7 +546,7 @@ font: 30pt &quot;NanumSquare&quot;;
      <string>▶</string>
     </property>
    </widget>
-   <widget class="QFrame" name="frame">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
       <x>1510</x>
@@ -559,12 +559,6 @@ font: 30pt &quot;NanumSquare&quot;;
      <string notr="true">border-bottom-left-radius: 20px; 
 border-bottom-right-radius: 20px;
 background-color:#ecf0f1;</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
     </property>
     <widget class="QTextBrowser" name="outputText">
      <property name="geometry">
@@ -583,8 +577,8 @@ background-color:#00000000;</string>
     <widget class="QLabel" name="outputImage">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>400</y>
+       <x>140</x>
+       <y>20</y>
        <width>600</width>
        <height>600</height>
       </rect>
@@ -638,10 +632,10 @@ height:80px;
     <widget class="QWidget" name="gridLayoutWidget">
      <property name="geometry">
       <rect>
-       <x>180</x>
-       <y>400</y>
-       <width>561</width>
-       <height>471</height>
+       <x>270</x>
+       <y>820</y>
+       <width>351</width>
+       <height>351</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="plyOut"/>
@@ -776,7 +770,7 @@ border-top-left-radius: 50px;  </string>
    <zorder>mainList</zorder>
    <zorder>resetBtn</zorder>
    <zorder>runBtn</zorder>
-   <zorder>frame</zorder>
+   <zorder>widget</zorder>
    <zorder>label_7</zorder>
    <zorder>closeBtn</zorder>
    <zorder>label_6</zorder>
