@@ -1,5 +1,7 @@
 import os
 import sys
+
+import cv2
 import pygame
 
 
@@ -10,8 +12,9 @@ from PyQt5.QtCore import *
 import  RecorD
 from input_text import TextDialog
 from select_lang import LangDialog
+from recordTest import Window
 from odOut import odDialog
-import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model,dalle,odOut,plotter
+import tts, stt,text_translation,select_lang,input_text,OCR,detection,lang_detect,face,model,dalle,odOut,plotter,recordTest
 form_class = uic.loadUiType("_uiFiles/mainPage.ui")[0]
 
 
@@ -116,9 +119,9 @@ class WindowClass(QMainWindow, form_class):
         self.modelList.insertItem(10, m11)
         self.modelList.insertItem(11, m12)
 
-        self.btnList=[]
-        self.pltBtn.itemDoubleClicked.connect(self.odBtnClicked)
-        self.pltBtn.setSpacing(20)
+        # self.btnList=[]
+        # self.pltBtn.itemDoubleClicked.connect(self.odBtnClicked)
+        # self.pltBtn.setSpacing(20)
 
     def close(self):
         sys.exit()
@@ -147,21 +150,36 @@ class WindowClass(QMainWindow, form_class):
             os.system('python cam.py')
             try:
                 self.fileDir='image/input_photo.jpg'
+                print(self.fileDir)
             except:
                 pass
         elif(rowText=='mic'):
-            RecorD.main()
-            filepath = RecorD.filename
-            specialChars = "\\"
-            for specialChar in specialChars:
-                filepath = filepath.replace(specialChar, '/')
-                print(filepath)
-            self.fileDir=filepath
+            # RecorD.main()
+            # filepath = RecorD.filename
+            # specialChars = "\\"
+            # for specialChar in specialChars:
+            #     filepath = filepath.replace(specialChar, '/')
+            #     print(filepath)
+            # self.fileDir=filepath
+
+            os.system('python recordTest.py')
+            try:
+                self.fileDir='soundFiles/input.wav'
+                print(self.fileDir)
+            except:
+                pass
+
+
+
+
+
+
 
         elif(rowText=='번역'):
             self.langD = LangDialog()
             self.langD.exec()
             self.target=select_lang.mainlang
+            print(self.target)
 
         elif(rowText=='draw'):
             os.system('python drawing.py')
@@ -259,8 +277,16 @@ class WindowClass(QMainWindow, form_class):
             elif (i == 'Image Generation'):
                 try:
                     dalle.dalle(self.txt)
-                    self.fileDir = 'image/dalle.png'
-                    self.outputImage.setPixmap(QtGui.QPixmap(self.fileDir))
+
+                    img = cv2.imread('image/dalle.png')
+                    # --② 배율 지정으로 확대
+                    dst2 = cv2.resize(img, None, None, 2, 2, cv2.INTER_CUBIC)
+                    cv2.imwrite('image/dalleBig.png', dst2)
+                    self.fileDir = 'image/dalleBig.png'
+                    dallePixmap=QPixmap(self.fileDir)
+                    self.outputImage.setPixmap(dallePixmap)
+
+                    print('image')
                 except:
                     print("error")
                     self.outputText.setText("해당 수식을 인식할 수 없습니다.")
@@ -304,6 +330,13 @@ class WindowClass(QMainWindow, form_class):
         self.outputImage.clear()
         for i in reversed(range(self.plyOut.count())):
             self.plyOut.itemAt(i).widget().setParent(None)
+        dir_s = 'C:/22_IF028/22_if028/soundFiles/'
+        if os.path.exists(dir_s):
+            for f in os.scandir(dir_s):
+                os.remove(f.path)
+            print('done')
+        else:
+            print('no')
 
 
 

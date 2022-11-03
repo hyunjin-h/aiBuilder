@@ -585,9 +585,12 @@ background-color:#00000000;</string>
       <rect>
        <x>200</x>
        <y>400</y>
-       <width>581</width>
-       <height>551</height>
+       <width>600</width>
+       <height>600</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#00000000;</string>
      </property>
      <property name="text">
       <string/>
@@ -644,9 +647,9 @@ height:80px;
      <layout class="QGridLayout" name="plyOut"/>
     </widget>
     <zorder>pltBtn</zorder>
-    <zorder>outputImage</zorder>
     <zorder>outputText</zorder>
     <zorder>gridLayoutWidget</zorder>
+    <zorder>outputImage</zorder>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">

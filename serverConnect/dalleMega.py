@@ -16,17 +16,17 @@ def dalle(text):
     print(jax.devices())
 
     # Load models & tokenizer
-    DALLE_MODEL = "dalle-mini/dalle-mini/mega-1-fp16:latest"  # can be wandb artifact or 🤗 Hub or local folder or google bucket
+    DALLE_MODEL = "/root/models/mega"  # can be wandb artifact or 🤗 Hub or local folder or google bucket
     DALLE_COMMIT_ID = None
 
     # VQGAN model
-    VQGAN_REPO = "dalle-mini/vqgan_imagenet_f16_16384"
-    VQGAN_COMMIT_ID = "e93a26e7707683d349bf5d5c41c5b0ef69b677a9"
+    VQGAN_REPO = "/root/models/vqgan"
+    VQGAN_COMMIT_ID = None#"e93a26e7707683d349bf5d5c41c5b0ef69b677a9"
 
 
     # Load dalle-mini
     model, params = DalleBart.from_pretrained(
-        DALLE_MODEL, revision=DALLE_COMMIT_ID, dtype=jnp.float16, _do_init=False
+        DALLE_MODEL, revision=DALLE_COMMIT_ID, dtype=jnp.float16, _do_init=False, local_files_only=True
     )
 
     # Load VQGAN
@@ -79,7 +79,7 @@ def dalle(text):
 
     #generate image
     # number of predictions per prompt
-    n_predictions = 4
+    n_predictions = 1
 
     # We can customize generation parameters (see https://huggingface.co/blog/how-to-generate)
     gen_top_k = None
@@ -115,3 +115,4 @@ def dalle(text):
             img.save(f"dalle_image/image_D{i+1}.jpeg")
 
     return 'dalle_image/image_D1.jpeg'
+

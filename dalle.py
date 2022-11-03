@@ -3,7 +3,7 @@ import json
 def dalle(text):
 
     encText=text
-    url='http://175.45.195.35:5000/model/'+encText
+    url='http://223.130.131.53:5000/model/'+encText
     r=requests.get(url)
     r=r.content
 

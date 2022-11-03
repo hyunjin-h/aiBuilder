@@ -81,6 +81,7 @@ class RecGui(tk.Tk):
         self.rec_button = ttk.Button(f)
         self.rec_button.pack(side='left', padx=padding, pady=padding)
 
+
         self.settings_button = ttk.Button(
             f, text='settings', command=self.on_settings)
         self.settings_button.pack(side='left', padx=padding, pady=padding)
@@ -197,6 +198,7 @@ class RecGui(tk.Tk):
         self.create_stream(device=w.result)
 
     def init_buttons(self):
+
         self.rec_button['text'] = '🛑'
         self.rec_button['command'] = self.on_rec
         if self.stream:
