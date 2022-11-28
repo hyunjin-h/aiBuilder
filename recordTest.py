@@ -49,7 +49,8 @@ class Window(QWidget):
         super().__init__()
         self.setObjectName("audio")
         self.resize(500, 500)
-        self.setStyleSheet("background-color: #89a3e3;;")
+        self.setStyleSheet("background-color: #ecf0f1;	"
+                           )
 
         self.setMinimumSize(QSize(500,500))
         self.setMaximumSize(QSize(500,500))
@@ -64,26 +65,21 @@ class Window(QWidget):
         self.recording_thread.sig_stopped.connect(self.recording_stopped)
 
         self.centralwidget = QWidget(self)
+        self.eLabel = QLabel(self.centralwidget)
+        self.eLabel.setGeometry(QRect(0, 0, 500, 500))
+        self.eLabel.setStyleSheet("border :10px solid black;border-radius:20px;\n")
         self.labelRec = QLabel(self.centralwidget)
 
-        self.labelRec.setGeometry(QRect(87, 100, 150, 100))
-        self.labelRec.setStyleSheet("border-radius:20px;\n"
-                                  "font: 14pt 'NanumSquare';\n"
-                                  "background-color: #e3d5ca;	\n"
-                                  "\n"
-                                  "color:#ffffff;\n")
+        self.labelRec.setGeometry(QRect(100, 100, 300, 100))
+        self.labelRec.setStyleSheet("font: 14pt 'NanumSquare';\n")
 
         self.recbtn = QPushButton(self.centralwidget)
 
+        self.recbtn.setGeometry(QRect(87, 250, 100, 100))
+        self.recbtn.setStyleSheet('''QPushButton{background-color: transparent;
+                                    border-image:url("image/record.png");}''')
 
-        self.recbtn.setGeometry(QRect(87, 250, 150, 100))
-        self.recbtn.setStyleSheet("border-radius:20px;\n"
-                                        "font: 14pt 'NanumSquare';\n"
-                                        "background-color: #e3d5ca;	\n"
-                                        "\n"
-                                        "color:#ffffff;\n")
-
-        self.recbtn.setText("확인")
+        # self.recbtn.setText("확인")
         # Connect signal "recbtn.clicked" to the slot "recording_thread.start" of our QThread
         # Never connect directly to the run, always to start!
         self.recbtn.clicked.connect(self.recording_thread.start)
@@ -91,13 +87,10 @@ class Window(QWidget):
         self.stopbtn = QPushButton(self.centralwidget)
 
 
-        self.stopbtn.setGeometry(QRect(275, 250, 150, 100))
-        self.stopbtn.setStyleSheet("border-radius:20px;\n"
-                                  "font: 14pt 'NanumSquare';\n"
-                                  "background-color: #e3d5ca;	\n"
-                                  "\n"
-                                  "color:#ffffff;\n")
-        self.stopbtn.setText("확인")
+        self.stopbtn.setGeometry(QRect(300, 250, 100, 100))
+        self.stopbtn.setStyleSheet('''QPushButton{background-color: transparent;
+                                    border-image:url("image/stop.png");}''')
+        # self.stopbtn.setText("확인")
         self.stopbtn.setDisabled(True)
         self.pushButton_3 = QPushButton(self.centralwidget)
         self.pushButton_3.setGeometry(QRect(200, 400, 100, 50))

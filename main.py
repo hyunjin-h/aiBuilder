@@ -4,6 +4,7 @@ import time
 
 import cv2
 import pygame
+import requests
 
 
 from PyQt5.QtWidgets import *
@@ -100,7 +101,7 @@ class WindowClass(QMainWindow, form_class):
         m7 = QListWidgetItem(QIcon('image/face.png'), "Face Recognition")
         m7.setToolTip('입력: <font color=#e76f51>이미지</font><br>출력: <font color=#177e89>텍스트</font><br><font size=2>얼굴이미지로 성별, 나이, 기분 예측</font>')
         m8 = QListWidgetItem(QIcon('image/imggen.png'), "Image Generation")
-        m8.setToolTip('입력: <font color=#177e89>텍스트</font><br>출력: <font color=#e76f51>이미지</font><br><font size=2>텍스트 기반 이미지 생성</font>')
+        m8.setToolTip('입력: <font color=#177e89>텍스트(영어)</font><br>출력: <font color=#e76f51>이미지</font><br><font size=2>텍스트 기반 이미지 생성</font>')
         m9 = QListWidgetItem(QIcon('image/cal.png'), "AI calculator")
         m9.setToolTip('입력: <font color=#e76f51>이미지</font><br>출력: <font color=#177e89>텍스트</font><br><font size=2>손글씨 수식을 인식하여 수식 및 결과값 출력</font>')
         m10 = QListWidgetItem( "celebrity")
@@ -116,9 +117,9 @@ class WindowClass(QMainWindow, form_class):
         self.modelList.insertItem(6, m7)
         self.modelList.insertItem(7, m8)
         self.modelList.insertItem(8, m9)
-        self.modelList.insertItem(9,m10)
-        self.modelList.insertItem(10, m11)
-        self.modelList.insertItem(11, m12)
+        # self.modelList.insertItem(9,m10)
+        # self.modelList.insertItem(10, m11)
+        # self.modelList.insertItem(11, m12)
 
         # self.btnList=[]
         # self.pltBtn.itemDoubleClicked.connect(self.odBtnClicked)
@@ -263,6 +264,7 @@ class WindowClass(QMainWindow, form_class):
                     self.source = 'en'
                 if (odOut.odod == 1):
                     # 카메라 촬영
+                    self.outputText.setText("플로터")
                     cap = cv2.VideoCapture(1,cv2.CAP_DSHOW)  # 노트북 웹캠을 카메라로 사용 #걍 카메라는 여기 1번으로 고치기
                     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
                     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
@@ -279,6 +281,10 @@ class WindowClass(QMainWindow, form_class):
                     cap.release()
                     cv2.destroyAllWindows()
                     self.fileDir='image/plotter.jpeg'
+                    # cv2_image = cv2.imread(self.fileDir, cv2.IMREAD_COLOR)
+                    # cv2_image =cv2.flip(cv2_image, 1)
+                    # cv2.imwrite('image/plotter_flip.jpeg',cv2_image)
+                    # self.fileDir = 'image/plotter_flip.jpeg'
                     detection.object_detect(self.fileDir)
 
 
@@ -311,7 +317,7 @@ class WindowClass(QMainWindow, form_class):
                     print('image')
                 except:
                     print("error")
-                    self.outputText.setText("해당 수식을 인식할 수 없습니다.")
+                    self.outputText.setText("해당 텍스트를 변환할 수 없습니다.")
 
 
 
@@ -354,6 +360,7 @@ class WindowClass(QMainWindow, form_class):
         for i in reversed(range(self.plyOut.count())):
             self.plyOut.itemAt(i).widget().setParent(None)
         dir_s = 'C:/22_IF028/22_if028/soundFiles/'
+
         if os.path.exists(dir_s):
             for f in os.scandir(dir_s):
                 try:

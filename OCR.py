@@ -4,8 +4,8 @@ import time
 import json
 def ocr(imgFile):
     global ocr_res
-    api_url ='https://gnqvoohdeh.apigw.ntruss.com/custom/v1/17501/d217bed6412bddad99689e8ed903afc039d6475de2a7f2ff116768c96b7b3b30/general'
-    secret_key = 'bExwVkJpVG9VVVhteW9oRmNSWExyWHNHdGNlRlNDa0c='
+    api_url ='https://nufmp03pym.apigw.ntruss.com/custom/v1/19385/a5729de6f4b4e7817359cceb25803b260165d7ffa53f0cb3e68cca3ea1f004ac/general'
+    secret_key = 'R0hQWUF5Y0lwbHJBVHBaTGdVWHZzTXd3R2Rza0dMQXU='
     image_file = imgFile
 
     request_json = {

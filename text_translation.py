@@ -4,8 +4,8 @@ import urllib.request
 import json
 def trans(text,source,target):
     global trans_res
-    client_id = "pficodqpxs"
-    client_secret = "aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
+    client_id = "88nlvtm8gq"
+    client_secret = "gLqWxSUK0rdeT3h3PW74nqMDB02Q0b3q6q8LVGsK"
 
     encText = urllib.parse.quote(text)
     data = "source="+source+"&target="+target+"&text=" + encText #여기에서 언어를 바꾸면 될듯 조건문 사용해서

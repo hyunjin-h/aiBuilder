@@ -7,8 +7,8 @@ class ClovaSummary:
     # Clova Speech invoke URL
 
     url = 'https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize'
-    client_id = "pficodqpxs"
-    client_secret = "aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
+    client_id = "mmmau3h9mh"
+    client_secret = "019qpb0hJ0ttjUAFjNQwx1ZiRVoj2hxyPBNffoKU"
 
     def req(self, content):
         request_body = {

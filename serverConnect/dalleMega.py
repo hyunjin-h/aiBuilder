@@ -114,6 +114,6 @@ def dalle(text):
             img = Image.fromarray(np.asarray(decoded_img * 255, dtype=np.uint8))
             images.append(img)
             img.save(f"dalle_image/image_D{i+1}.jpeg")
-    torch.cuda.empty_cache()
+    cuda.close()
     return 'dalle_image/image_D1.jpeg'
 

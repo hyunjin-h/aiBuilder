@@ -4,8 +4,8 @@ import json
 
 def detect_lang(text):
         global lang
-        client_id = "pficodqpxs"
-        client_secret = "aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
+        client_id = "88nlvtm8gq"
+        client_secret = "gLqWxSUK0rdeT3h3PW74nqMDB02Q0b3q6q8LVGsK"
         encQuery = urllib.parse.quote(text)
         data = "query=" + encQuery
         url = "https://naveropenapi.apigw.ntruss.com/langs/v1/dect"

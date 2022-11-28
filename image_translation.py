@@ -4,8 +4,8 @@ import uuid
 import json
 import base64
 
-client_id="pficodqpxs"
-client_secret="aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
+client_id="mmmau3h9mh"
+client_secret="019qpb0hJ0ttjUAFjNQwx1ZiRVoj2hxyPBNffoKU"
 
 data = {
   'source': 'en', #source랑 target 바꿔주기

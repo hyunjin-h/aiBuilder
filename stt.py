@@ -3,8 +3,8 @@ import json
 import requests
 def stt(sound):
     global stt_res
-    client_id = "pficodqpxs"
-    client_secret = "aFVah3wAvD8xvbM8Mp4iOUEl9a5h23XlAaDr4gMk"
+    client_id = "mmmau3h9mh"
+    client_secret = "019qpb0hJ0ttjUAFjNQwx1ZiRVoj2hxyPBNffoKU"
     lang = "Kor" # 언어 코드 ( Kor, Jpn, Eng, Chn )
     url = "https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang=" + lang
 

@@ -10,7 +10,7 @@ import detection
 
 def Plotter(txt):
     # Open grbl serial port
-    s = serial.Serial(port="COM8", baudrate=115200)
+    s = serial.Serial(port="COM7", baudrate=115200)
     s.write("\r\n\r\n".encode())
     time.sleep(2)  # Wait for grbl to initialize
     s.flushInput()  # Flush startup text in serial input
@@ -23,12 +23,6 @@ def Plotter(txt):
         gcode = "$X " + '\n'
         s.write(gcode.encode())
         return "Here is"
-    def go():
-        gcode = "M3 S255" + '\n'+"G10 P0 L20 X0 Y0 Z0" + '\n'+"G21G91X{}Y-{}F10".format((x1-30)/2.5, (x1-30)/2.5) + '\n' + "G21G91X{}Y{}F10".format(y1/2.5, y1/2.5) + '\n'+"M5" + '\n' +"G21G91X{}Y-{}10".format(wid / 2.5, wid / 2.5) + '\n' + "G21G91X{}Y{}F10".format(hei / 2.5,
-                                                                                                 hei / 2.5) + '\n'+ "G21G91X-{}Y{}F10".format(wid/2.5, wid/2.5) + '\n' + "G21G91X-{}Y-{}F10".format(hei/2.5, hei/2.5) + '\n'+"M3 S255" + '\n'
-        print(gcode)
-        s.write(gcode.encode())
-        return(gcode)
 
     def square():
         gcode = "G21G91X{}Y-{}10".format(wid / 2.5, wid / 2.5) + '\n' + "G21G91X{}Y{}F10".format(hei / 2.5,
@@ -51,7 +45,7 @@ def Plotter(txt):
         return "return to 원점"
 
     def initial():  # 실제 종이랑 플로터 위치 측정 후 시작점 즉 종이 제일 끝 설정하기
-        gcode = "G21G91X{}Y-{}F10".format((x1-30)/2.5, (x1-30)/2.5) + '\n' + "G21G91X{}Y{}F10".format(y1/2.5, y1/2.5) + '\n'
+        gcode = "G21G91X{}Y-{}F10".format((x1)/2.5, (x1)/2.5) + '\n' + "G21G91X{}Y{}F10".format(y1/2.5, y1/2.5) + '\n'
         s.write(gcode.encode())
         return "now we have to draw."
 
@@ -72,13 +66,15 @@ def Plotter(txt):
             boxes = objR[i]
             # # location에 크기와 좌표 저장
             # location = []
-            x1 = (boxes[0]) * 380.0
-            x2 = (boxes[2]) * 297.0
-            y1 = (boxes[1]) * 210.0
-            y2 = (boxes[3]) * 260.0
+            ratioX=220*1.3
+            ratioY=220
+            x1 = (boxes[1]) *ratioX
+            x2 = (boxes[3]) *ratioX
+            y1 = (1-boxes[2]) *ratioY
+            y2 = (1-boxes[0]) *ratioY
             wid = x2 - x1
             hei = y2 - y1
-            print(wid,hei)
+            print(x1,x2,y1,y2,wid,hei)
 
             servo_up()
 
@@ -107,7 +103,8 @@ def Plotter(txt):
             time.sleep(2)
 
 
-            time.sleep(10)
+            time.sleep(15)
+            break
 
 
         else:
