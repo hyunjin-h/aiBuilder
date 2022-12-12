@@ -236,7 +236,7 @@ class WindowClass(QMainWindow, form_class):
             elif(i=='STT'):
                 stt.stt(self.fileDir)
                 self.txt=stt.stt_res
-                self.source='ko' #추후에 직접 입력할 수 있도록 할것임
+                self.source='en' #추후에 직접 입력할 수 있도록 할것임
                 if (lw.item(last).text() == 'STT'):
                     self.outputText.setText(stt.stt_res)
             elif(i=='번역'):
