@@ -1,5 +1,6 @@
 # 인공지능 개발 플랫폼 [🔗YouTube](https://www.youtube.com/watch?v=v-aPSuBKuvM)
 인공지능 서비스를 쉽고 빠르게 개발할 수 있도록 하는 플랫폼  
+🏆2022 이브와 ICT 공모전 대상(과기부장관상)  
 
 지원 AI 모델: STT, TTS, OCR, Image Generation, Object Detection, Face Recognition, AI calculator  
 (Naver Cloud Platform, Dall-e, 자체모델 등)
