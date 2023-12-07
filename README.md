@@ -1,4 +1,4 @@
 인공지능 개발 플랫폼
 
+![플로터 AI_s2_1 (1)](https://github.com/hyunjin-h/aiBuilder/assets/87686021/95533f2d-1cab-47ab-bf83-69efe336ef45)
 
-![ocr영상](https://github.com/hyunjin-h/aiBuilder/assets/87686021/4b1069a2-f059-4328-ab27-7805f5e4dd5c)
