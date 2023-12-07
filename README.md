@@ -2,7 +2,8 @@
 인공지능 서비스를 쉽고 빠르게 개발할 수 있도록 하는 플랫폼
 
 ## 화면
-![image](https://github.com/hyunjin-h/aiBuilder/assets/87686021/cea2a9d7-8780-45b3-ab68-a1c54b33a509) ![image](https://github.com/hyunjin-h/aiBuilder/assets/87686021/87c4d251-7784-4009-ac7e-6a430440afcb)
+![image](https://github.com/hyunjin-h/aiBuilder/assets/87686021/82e0b827-68f1-4168-9a99-0465547a1948)
+
 
 ## 활용사례1
 직접 쓴 단어의 물체의 실제 위치를 플로터를 통해 알려줌  
