@@ -6,7 +6,9 @@
 지원 AI 모델: STT, TTS, OCR, Image Generation, Object Detection, Face Recognition, AI calculator  
 (Naver Cloud Platform, Dall-e, 자체모델 등)
 ## Overview
+![image](https://github.com/hyunjin-h/aiBuilder/assets/87686021/6855d279-d270-43d3-8898-20811e28d88b)
 ![인공지능개발플랫폼](https://github.com/hyunjin-h/aiBuilder/assets/87686021/2702f51f-ad2f-4e7b-9b36-f3a83ff224de)
+
 
 ## 화면
 ![image](https://github.com/hyunjin-h/aiBuilder/assets/87686021/82e0b827-68f1-4168-9a99-0465547a1948)
